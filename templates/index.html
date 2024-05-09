@@ -21,7 +21,7 @@
   <body>
     <div class="container">
       <h1 class="mt-4 mb-4 text-center">Job Application</h1>
-      <form>
+      <form method="POST">
         <div class="form-group mb-4">
           <label for="first-name" class="form-label">First Name:</label>
           <input
@@ -47,8 +47,8 @@
           <input
             class="form-control"
             type="email"
-            name="email-name"
-            id="email-name"
+            name="email"
+            id="email"
             required
           />
         </div>
@@ -63,7 +63,7 @@
           />
         </div>
         <div class="form-group mb-4">
-          <label for="">Current Occupation:</label>
+          <label for="occupation">Current Occupation:</label>
           <br />
           <div class="btn-group-vertical" id="occupation">
             <input
@@ -71,6 +71,7 @@
               class="btn-check form-control"
               id="employed"
               name="occupation"
+              value="employed"
               required
             />
             <label for="employed" class="btn btn-outline-secondary"
@@ -82,6 +83,7 @@
               class="btn-check form-control"
               id="unemployed"
               name="occupation"
+              value="unemployed"
               required
             />
             <label for="unemployed" class="btn btn-outline-secondary"
@@ -93,6 +95,7 @@
               class="btn-check form-control"
               id="self-employed"
               name="occupation"
+              value="self-employed"
               required
             />
             <label for="self-employed" class="btn btn-outline-secondary"
@@ -104,6 +107,7 @@
               class="btn-check form-control"
               id="student"
               name="occupation"
+              value="student"
               required
             />
             <label for="student" class="btn btn-outline-secondary"
@@ -111,10 +115,14 @@
             >
           </div>
         </div>
-        <button class="btn btn-secondary mb-4" type="button">Submit</button>
+        <button class="btn btn-secondary mb-4" type="submite">Submit</button>
       </form>
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="alert alert-success">
+        {% for message in messages %} {{ message }} {% endfor %}
+      </div>
     </div>
-
+    {% endif %} {% endwith %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
   </body>
